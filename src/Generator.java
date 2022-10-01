@@ -51,8 +51,9 @@ public class Generator {
             this.passengers.removeAll(found);
 
 
-
-            this.elevatorSystem.status(-1);
+            if(step==0){
+                this.elevatorSystem.status(-1);
+            }
 
             this.elevatorSystem.step(step);
 

@@ -31,6 +31,17 @@ public class Main {
         generator.simulate(20);
     }
 
+    static void test3() throws InterruptedException {
+        ElevatorSystem elevatorSystem = new ElevatorSystem(5,5);
+        Generator generator = new Generator(elevatorSystem);
+        generator.newPassenger(0,2,0);
+        generator.newPassenger(0,1,3);
+        generator.newPassenger(0,4,1);
+        generator.newPassenger(0,3,0);
+        generator.simulate(20);
+    }
+
+
 
     public static void main(String[] args) throws InterruptedException {
         Path path = FileSystems.getDefault().getPath("logs.txt");
@@ -55,7 +66,7 @@ public class Main {
 //        }
 
 
-        test2();
+        test3();
 
 
     }

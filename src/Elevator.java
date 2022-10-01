@@ -86,34 +86,17 @@ public class Elevator {
 
     private Action nextAction(){
         if(this.action == Action.UP){
-            for(Floor floor : elevatorSystem.floors){
-                if(floor.assignedElevator == this.id){
-                    if(floor.lightUp){
-                        return Action.UP;
-                    }
-                }
+            if(countUpRequests()>0){
+                return Action.UP;
+            }else if(countDownRequests()>0){
+                return Action.DOWN;
             }
-
-            for(Passenger passenger : this.passengers){
-                if(passenger.destinationFloor>currentFloor){
-                    return Action.UP;
-                }
-            }
-
-            for()
 
         }else if(this.action == Action.DOWN){
-            for(Floor floor : elevatorSystem.floors){
-                if(floor.assignedElevator == this.id){
-                    if(floor.lightDown){
-                        return Action.DOWN;
-                    }
-                }
-            }
-            for(Passenger passenger : this.passengers){
-                if(passenger.destinationFloor<currentFloor){
-                    return Action.DOWN;
-                }
+            if(countDownRequests()>0){
+                return Action.DOWN;
+            }else if(countUpRequests()>0){
+                return Action.UP;
             }
         }else{ //this.action == Action.STOP
             int actionsUp = countUpRequests();
