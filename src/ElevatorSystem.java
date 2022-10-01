@@ -58,9 +58,7 @@ public class ElevatorSystem {
                 Elevator elevator = elevators.get(randomizer.nextInt(elevators.size()));
                 floor.assignedElevator = elevator.id;
             }
-
         }
-
 
         for(Elevator elevator : elevators){
             elevator.step(step);

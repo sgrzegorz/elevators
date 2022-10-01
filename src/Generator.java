@@ -45,6 +45,7 @@ public class Generator {
                     }
 
                     this.elevatorSystem.pickup(passenger.entryFloor,direction,passenger);
+                    found.add(passenger);
 
                 }
             }
@@ -61,6 +62,9 @@ public class Generator {
             sleep(1000);
 
             step+=1;
+            if(finished()){
+                break;
+            }
         }
         ElevatorSystem.log(this.elevatorSystem.toString());
     }
@@ -71,6 +75,26 @@ public class Generator {
             s+=passenger+ "\tentry:floor"+passenger.entryFloor+" --> \tdestination:floor"+passenger.destinationFloor+"\n";
         }
         return s;
+    }
+
+    boolean finished(){
+        if(this.passengers.size()!=0){
+            return false;
+        }
+
+        for(Elevator elevator : this.elevatorSystem.elevators){
+            if(elevator.passengers.size()!=0){
+                return false;
+            }
+        }
+        for(Floor floor : elevatorSystem.floors){
+            if(floor.passengers.size()!=0){
+                return false;
+            }
+        }
+
+        return true;
+
     }
 
 

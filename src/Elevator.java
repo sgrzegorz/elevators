@@ -84,6 +84,10 @@ public class Elevator {
         return count;
     }
 
+    public int getWorkload(){
+        for()
+    }
+
     private Action nextAction(){
         if(this.action == Action.UP){
             if(countUpRequests()>0){
