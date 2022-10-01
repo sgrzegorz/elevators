@@ -6,10 +6,16 @@ public class Floor {
     boolean lightUp = false;
     int assignedElevator = -1;
 
+    static int allFloors =0;
+
+    int id;
+
     ArrayList<Passenger> passengers;
 
     public Floor() {
         this.passengers = new ArrayList<>();
+        this.id=Floor.allFloors;
+        Floor.allFloors++;
     }
 
     public void addPassenger(Direction direction,Passenger passenger){

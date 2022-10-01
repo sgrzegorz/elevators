@@ -32,7 +32,7 @@ public class Generator {
         int step=0;
         while(step <=maxStep){
 
-
+            // Add new Passengers for current step
             List<Passenger> found= new ArrayList<>();
             for(Passenger passenger : passengers){
                 if(passenger.entryStep == step){
@@ -50,6 +50,9 @@ public class Generator {
             }
             this.passengers.removeAll(found);
 
+
+
+            this.elevatorSystem.status(-1);
 
             this.elevatorSystem.step(step);
 

@@ -99,6 +99,9 @@ public class Elevator {
                     return Action.UP;
                 }
             }
+
+            for()
+
         }else if(this.action == Action.DOWN){
             for(Floor floor : elevatorSystem.floors){
                 if(floor.assignedElevator == this.id){
@@ -130,6 +133,16 @@ public class Elevator {
 
     public void step(int step){
 
+        // Find next action
+        Action nextAction = nextAction();
+        this.action =nextAction;
+
+        if(this.action == Action.DOWN && this.currentFloor!=0){
+            this.currentFloor-=1;
+        } else if (this.action==Action.UP && this.currentFloor!=elevatorSystem.numberOfFloors-1) {
+            this.currentFloor+=1;
+        }
+
         // Open doors, let passengers leave the elevator
         List<Passenger> found = new ArrayList<>();
         for(Passenger passenger : this.passengers){
@@ -147,15 +160,6 @@ public class Elevator {
             floor1.clear();
         }
 
-        // Find next action
-        Action nextAction = nextAction();
-        this.action =nextAction;
-
-        if(this.action == Action.DOWN && this.currentFloor!=0){
-            this.currentFloor-=1;
-        } else if (this.action==Action.UP && this.currentFloor!=elevatorSystem.numberOfFloors-1) {
-            this.currentFloor+=1;
-        }
 
     }
 

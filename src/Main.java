@@ -23,7 +23,7 @@ public class Main {
     }
 
     static void test2() throws InterruptedException {
-        ElevatorSystem elevatorSystem = new ElevatorSystem(3,4);
+        ElevatorSystem elevatorSystem = new ElevatorSystem(2,4);
         Generator generator = new Generator(elevatorSystem);
         generator.newPassenger(0,2,0);
         generator.newPassenger(0,1,3);

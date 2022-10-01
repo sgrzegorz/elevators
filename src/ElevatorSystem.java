@@ -70,7 +70,7 @@ public class ElevatorSystem {
 
     void status(int step) {
 
-        System.out.println("------------------" + step + "------------------------------------");
+        System.out.println("step:" + step + "  %%%%%%%%%%%%%%%%%%%%%");
         for (int floor = this.numberOfFloors-1; floor>=0 ; floor--) {
             System.out.print("floor"+floor+"\t");
             for (Elevator elevator : elevators) {
