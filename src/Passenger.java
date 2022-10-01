@@ -22,4 +22,9 @@ public class Passenger {
     int destinationFloor;
     int entryFloor;
     int entryStep;
+
+    @Override
+    public String toString() {
+        return "Passenger"+id;
+    }
 }

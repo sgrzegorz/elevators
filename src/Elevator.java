@@ -135,14 +135,14 @@ public class Elevator {
         for(Passenger passenger : this.passengers){
             if(this.currentFloor == passenger.destinationFloor){
                 found.add(passenger);
-                ElevatorSystem.log("Elevator" + this.id + "\tfloor" + this.currentFloor+ "\tleft passengerIds:" +  passenger.id);
+                ElevatorSystem.log("Elevator" + this.id + "\tfloor" + this.currentFloor+ "\tleft " +  passenger);
             }
         }
         this.passengers.removeAll(found);
         //take passengers into the elevator
         Floor floor1 = elevatorSystem.floors.get(this.currentFloor);
         if(floor1.assignedElevator == this.id){
-            ElevatorSystem.log("Elevator" + this.id + "\tfloor" + this.currentFloor+", took passengerIds "+ floor1);
+            ElevatorSystem.log("Elevator" + this.id + "\tfloor" + this.currentFloor+", took "+ floor1);
             this.passengers.addAll(floor1.passengers);
             floor1.clear();
         }
@@ -162,10 +162,11 @@ public class Elevator {
     public String toString(){
 
         String s="ElevatorId"+this.id+" ";
-        s+="PassengerId on board: ";
+        s+="passengers: ";
         for(Passenger passenger : this.passengers){
-            s+=passenger.id;
+            s+="Passenger"+passenger.id+" ";
         }
+        s+="\t currentFloor:floor" + this.currentFloor;
         s+="\n";
         return s;
     }

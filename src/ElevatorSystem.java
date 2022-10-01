@@ -67,19 +67,12 @@ public class ElevatorSystem {
         }
     }
 
-    void status1(){
-        System.out.println("------------------------------------------------------");
-
-        for(Elevator elevator : this.elevators){
-            System.out.println("elevator:"+elevator.id +"\tposition:"+elevator.currentFloor+"\tdestination:"+elevator.targetFloor);
-        }
-    }
 
     void status(int step) {
 
         System.out.println("------------------" + step + "------------------------------------");
         for (int floor = this.numberOfFloors-1; floor>=0 ; floor--) {
-            System.out.print("floor:"+floor+"\t");
+            System.out.print("floor"+floor+"\t");
             for (Elevator elevator : elevators) {
                 if (elevator.currentFloor == floor) {
                     System.out.print("[*] ");
@@ -89,9 +82,11 @@ public class ElevatorSystem {
                 }
             }
 
-            System.out.println("\tpassengers:" + this.floors.get(floor));
+            System.out.println("\t" + this.floors.get(floor));
             System.out.println();
         }
+
+        System.out.println(this);
 
     }
 
@@ -108,7 +103,7 @@ public class ElevatorSystem {
                 tmp="no";
             }
 
-            s+=("Floor"+i+"\t"+floors.get(i)+"\tpassengers:"+floors.get(i)+"\tassigned_elevator "+tmp+"\n");
+            s+=("Floor"+i+"\t"+"\tpassengers:"+floors.get(i)+"\tassigned_elevator "+tmp+"\n");
         }
         return s;
     }

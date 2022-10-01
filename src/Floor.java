@@ -26,14 +26,14 @@ public class Floor {
     public void clear(){
         this.lightUp =false;
         this.lightDown =false;
-        this.passengers = new ArrayList<>();
+        this.passengers.clear();
         this.assignedElevator = -1;
     }
 
     public String toString(){
         String s="";
         for(Passenger passenger : passengers){
-            s+=passenger.id+ " ";
+            s+=passenger+" ";
         }
         return s;
     }

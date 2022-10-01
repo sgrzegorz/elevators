@@ -50,9 +50,10 @@ public class Generator {
             }
             this.passengers.removeAll(found);
 
-            this.elevatorSystem.status(step);
+
             this.elevatorSystem.step(step);
 
+            this.elevatorSystem.status(step);
             sleep(1000);
 
             step+=1;
@@ -63,7 +64,7 @@ public class Generator {
     String passengersString(){
         String s="";
         for(Passenger passenger : passengers){
-            s+="passengerId"+passenger.id+ "\tentry:floor:"+passenger.entryFloor+" --> \tdestination:floor"+passenger.destinationFloor+"\n";
+            s+=passenger+ "\tentry:floor"+passenger.entryFloor+" --> \tdestination:floor"+passenger.destinationFloor+"\n";
         }
         return s;
     }

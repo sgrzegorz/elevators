@@ -7,12 +7,37 @@ import java.nio.file.Path;
 import static java.lang.Thread.sleep;
 
 public class Main {
+
+    static void test1() throws InterruptedException {
+        ElevatorSystem elevatorSystem = new ElevatorSystem(2,5);
+        Generator generator = new Generator(elevatorSystem);
+        generator.newPassenger(0,1,3);
+        generator.newPassenger(0,4,3);
+        generator.newPassenger(0,1,2);
+        generator.newPassenger(2,2,4);
+        generator.newPassenger(4,2,0);
+
+        generator.newPassenger(5,3,0);
+
+        generator.simulate(20);
+    }
+
+    static void test2() throws InterruptedException {
+        ElevatorSystem elevatorSystem = new ElevatorSystem(3,4);
+        Generator generator = new Generator(elevatorSystem);
+        generator.newPassenger(0,2,0);
+        generator.newPassenger(0,1,3);
+
+        generator.simulate(20);
+    }
+
+
     public static void main(String[] args) throws InterruptedException {
         Path path = FileSystems.getDefault().getPath("logs.txt");
         try {
             Files.delete(path);
         } catch (NoSuchFileException x) {
-            System.err.format("%s: no such" + " file or directory%n", path);
+            System.err.println(x);
         } catch (IOException x) {
             System.err.println(x);
         }
@@ -30,18 +55,8 @@ public class Main {
 //        }
 
 
+        test2();
 
-        ElevatorSystem elevatorSystem = new ElevatorSystem(2,5);
-        Generator generator = new Generator(elevatorSystem);
-        generator.newPassenger(0,1,3);
-        generator.newPassenger(0,4,3);
-        generator.newPassenger(0,1,2);
-        generator.newPassenger(2,2,4);
-        generator.newPassenger(4,2,0);
-
-        generator.newPassenger(5,3,0);
-
-        generator.simulate(20);
 
     }
 }
