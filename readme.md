@@ -21,14 +21,14 @@ wybranym przez użytkownika, aż zrealizuje wszystkie przydzielone jej piętra n
 
 - Każda winda szereguje przydzielone jej piętra według następującego algorytmu:
   1. poruszaj się w ustalonym kierunku, aż do ostatniego zleconego piętra 
-  2. zatrzymuj się po drodze na piętrach, które spełniają warunek: 
-     3. Piętro zostało przydzielone tej windzie/w windzie jest pasażer dla którego to piętro docelowe
+  2. zatrzymuj się po drodze na piętrach, które spełniają warunek (*)
      3. Na piętrze na którym się zatrzymałeś: 
         4. wypuść pasażerów
         4. wpuść nowych pasażerów
   5. Jeśli winda dotarła do ostatniego zlecenia w linii to zawraca i postępuje jak w (1)
   6. Jeśli nie ma więcej zleceń winda nie wykonuje ruchu.
-
+     
+(*) Piętro zostało przydzielone tej windzie/w windzie jest pasażer dla którego to piętro docelowe
 
 ### Cechy szczególne
 
