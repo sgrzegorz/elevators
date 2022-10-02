@@ -13,38 +13,33 @@ public class Generator {
         this.passengers = new ArrayList<Passenger>();
     }
 
-    public void newPassenger(int entryStep, int entryFloor, int destinationFloor){
-        if(destinationFloor >= elevatorSystem.numberOfFloors) {
-            throw new RuntimeException("Floor with id " + destinationFloor+ " does not exist");
+    public void newPassenger(int entryStep, int entryFloor, int destinationFloor) {
+        if (destinationFloor >= elevatorSystem.numberOfFloors) {
+            throw new RuntimeException("Floor with id " + destinationFloor + " does not exist");
         }
-        Passenger passenger = new Passenger(destinationFloor,entryFloor,entryStep);
+        Passenger passenger = new Passenger(destinationFloor, entryFloor, entryStep);
         passengers.add(passenger);
-    }
-
-    private void removePassenger(Passenger passenger){
-        this.passengers.remove(passenger);
-
     }
 
     public void simulate(int maxStep) throws InterruptedException {
         ElevatorSystem.log(passengersString());
 
-        int step=0;
-        while(step <=maxStep){
+        int step = 0;
+        while (step <= maxStep) {
 
             // Add new Passengers for current step
-            List<Passenger> found= new ArrayList<>();
-            for(Passenger passenger : passengers){
-                if(passenger.entryStep == step){
+            List<Passenger> found = new ArrayList<>();
+            for (Passenger passenger : passengers) {
+                if (passenger.entryStep == step) {
 
                     Direction direction = Direction.UP;
-                    if(passenger.entryFloor > passenger.destinationFloor){
+                    if (passenger.entryFloor > passenger.destinationFloor) {
                         direction = Direction.DOWN;
-                    }else if(passenger.entryFloor == passenger.destinationFloor){
+                    } else if (passenger.entryFloor == passenger.destinationFloor) {
                         new RuntimeException("Passenger destination is his entryFloor");
                     }
 
-                    this.elevatorSystem.pickup(passenger.entryFloor,direction,passenger);
+                    this.elevatorSystem.pickup(passenger.entryFloor, direction, passenger);
                     found.add(passenger);
 
                 }
@@ -52,7 +47,7 @@ public class Generator {
             this.passengers.removeAll(found);
 
 
-            if(step==0){
+            if (step == 0) {
                 this.elevatorSystem.status(-1);
             }
 
@@ -61,34 +56,34 @@ public class Generator {
             this.elevatorSystem.status(step);
             sleep(1000);
 
-            step+=1;
-            if(finished()){
+            step += 1;
+            if (finished()) {
                 break;
             }
         }
         ElevatorSystem.log(this.elevatorSystem.toString());
     }
 
-    String passengersString(){
-        String s="";
-        for(Passenger passenger : passengers){
-            s+=passenger+ "\tentry:floor"+passenger.entryFloor+" --> \tdestination:floor"+passenger.destinationFloor+"\n";
+    String passengersString() {
+        String s = "";
+        for (Passenger passenger : passengers) {
+            s += passenger + "\tentry:floor" + passenger.entryFloor + " --> \tdestination:floor" + passenger.destinationFloor + "\n";
         }
         return s;
     }
 
-    boolean finished(){
-        if(this.passengers.size()!=0){
+    private boolean finished() {
+        if (this.passengers.size() != 0) {
             return false;
         }
 
-        for(Elevator elevator : this.elevatorSystem.elevators){
-            if(elevator.passengers.size()!=0){
+        for (Elevator elevator : this.elevatorSystem.elevators) {
+            if (elevator.passengers.size() != 0) {
                 return false;
             }
         }
-        for(Floor floor : elevatorSystem.floors){
-            if(floor.passengers.size()!=0){
+        for (Floor floor : elevatorSystem.floors) {
+            if (floor.passengers.size() != 0) {
                 return false;
             }
         }
