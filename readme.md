@@ -34,3 +34,29 @@ wybranym przez użytkownika, aż zrealizuje wszystkie przydzielone jej piętra n
 
 - System wypisuje na terminalu co step swój stan
 - Do pliku logs.txt są zrzucane logi
+
+### Uruchomienie
+
+`git clone grzegorz_sroka.bundle`
+
+Otworzenie folderu grzegorz_sroka za pomocą programu IntelIJ
+
+Uruchomienie pliku Main.java za pomocą środowiska IntelIJ
+
+Przykładowa symulacja (plik Main.java)
+```
+    static void test4() throws InterruptedException {
+        ElevatorSystem elevatorSystem = new ElevatorSystem(LICZBA_WIND, LICZBA_PIĘTER_W_BUDYNKU);
+        Generator generator = new Generator(elevatorSystem);
+        generator.newPassenger(KROK_SYMULACJI_W_KTÓRYM_POJAWIA_SIĘ_PASAŻER, PIĘTRO_NA_KTÓRYM_SIĘ_POJAWIA, PIĘTRO_DOCELOWE);
+        generator.newPassenger(0, 1, 3);
+        generator.newPassenger(1, 4, 1);
+        generator.newPassenger(2, 3, 0);
+        generator.newPassenger(3, 1, 2);
+        generator.newPassenger(3, 2, 4);
+        generator.simulate(MAKSYMALNA_DŁUGOŚĆ_SYMULACJI); 
+    }
+
+
+
+```
